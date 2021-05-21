@@ -1,0 +1,22 @@
+# wordpressのシステムファイルを転送
+- /cms/wp-content/themes/*
++ /cms/wp-*/**
++ /cms/wp-*/
++ /cms/wp-*.php
++ /cms/index.php
++ /cms/license.txt
++ /cms/readme.html
++ /cms/xmlrpc.php
+
+# configの一部ファイルを転送
++ /config/calendar/holiday.json
++ /config/calendar/
++ /config/settings.php
++ /config/
+
+# .htaccessを転送
++ .htaccess
++ .htpasswd
+
+# 全て除外
+- *

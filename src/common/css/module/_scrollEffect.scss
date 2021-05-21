@@ -1,0 +1,68 @@
+@mixin scrollEffect(
+	// アニメーション時間
+	$duration: 0.4s,
+	// 子要素アニメーションの遅延時間
+	$delay: 0.1s,
+	// アニメーションのイージング
+	$easing: ease-out,
+	// 子要素の最大個数
+	$length: 20,
+	// 横移動の大きさ
+	$trlx: false,
+	// 縦移動の大きさ
+	$trly: false,
+	// ぼかしの大きさ
+	$blur: false,
+	// keyframesの名前
+	$name: scrollEffect
+) {
+	opacity: 0;
+
+	&Parent > * {
+		opacity: 0;
+	}
+
+	&.show,
+	&Parent.show > *,
+	&Parent > *.show {
+		animation: $name $duration $easing forwards;
+	}
+
+	&Parent > *.show {
+		animation-delay: 0s !important;
+	}
+
+	@for $i from 0 to $length {
+		&Parent > *:nth-child(#{$i + 1}) {
+			animation-delay: $i * $delay;
+		}
+	}
+
+	@keyframes #{$name} {
+		0% {
+			opacity: 0;
+			@if ($trlx) {
+				transform: translateX($trlx);
+			}
+			@if ($trly) {
+				transform: translateY($trly);
+			}
+			@if ($blur) {
+				filter: blur($blur);
+			}
+		}
+
+		100% {
+			opacity: 1;
+			@if ($trlx) {
+				transform: translateX(0);
+			}
+			@if ($trly) {
+				transform: translateY(0);
+			}
+			@if ($blur) {
+				filter: blur(0);
+			}
+		}
+	}
+}

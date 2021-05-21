@@ -1,0 +1,39 @@
+{
+	"common": {
+		"calendar": "カレンダーを更新しました",
+		"format": "1",
+		"html": "dl"
+	},
+	"info": {
+		"0": {
+			"time": "2020-09-11 00:00",
+			"title": "",
+			"text": "本文を入力します<span>HTMLタグも記入可能です</span><br>改行しました<a href='https://www.u-active.jp'>リンク設定も可能です</a>"
+		},
+		"1": {
+			"time": "2020-05-22 00:00",
+			"title": "タイトルを入力します",
+			"text": "本文を入力します<span>HTMLタグも記入可能です</span><br>改行しました<a href='https://www.u-active.jp'>リンク設定も可能です</a>"
+		},
+		"3": {
+			"time": "2020-05-22 13:00",
+			"title": "タイトルを入力します",
+			"text": "こちらのほうが同じ日付でも新しいほうです。本文を入力します<span>HTMLタグも記入可能です</span><br>改行しました<a href='https://www.u-active.jp'>リンク設定も可能です</a>"
+		},
+		"4": {
+			"time": "2020-04-11 00:00",
+			"title": "タイトルを入力します",
+			"text": "本文を入力します<span>HTMLタグも記入可能です</span><br>改行しました<a href='https://www.u-active.jp'>リンク設定も可能です</a>"
+		},
+		"5": {
+			"time": "2020-03-11 00:00",
+			"title": "タイトルを入力します",
+			"text": "本文を入力します<span>HTMLタグも記入可能です</span><br>改行しました<a href='https://www.u-active.jp'>リンク設定も可能です</a>"
+		},
+		"6": {
+			"time": "2020-06-11 00:00",
+			"title": "タイトルを入力します",
+			"text": "本文を入力します<span>HTMLタグも記入可能です</span><br>改行しました<a href='https://www.u-active.jp'>リンク設定も可能です</a>"
+		}
+	}
+}

@@ -1,0 +1,214 @@
+// 色
+$color-input-border: #e4e4e4;
+$color-input-bg: transparent;
+$color-input-focus: #e1efe3;
+$color-check: #26ac75;
+$color-select: #26ac75;
+
+// 幅 pc
+$width-input: 360px;
+$width-input-large: 720px;
+$width-input-small: 120px;
+
+// 幅 sp
+$width-input-sp: 600px;
+$width-input-sp-small: 200px;
+
+input,
+textarea,
+button,
+select {
+	margin: 0;
+	padding: 0;
+	background: none;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	vertical-align: middle;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+	transition: background-color 999999s;
+}
+
+input[type='text'],
+input[type='tel'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+textarea,
+select {
+	font-size: rem(30);
+	padding: 6px 10px;
+	border: 1px solid $color-input-border;
+	@include font-gothic;
+	line-height: 1.5;
+	width: $width-input;
+	background: linear-gradient(to right, $color-input-focus 50%, rgba($color-input-focus, 0) 50%) right top no-repeat $color-input-bg;
+	background-size: 200% 100%;
+	transition: background-position $duration;
+
+	&:focus {
+		background-position-x: left;
+	}
+}
+
+input[name^='email'],
+input[name*='address'] {
+	width: $width-input-large;
+}
+input[name^='address-level'] {
+	width: $width-input;
+}
+
+input[name^='old'] {
+	width: $width-input-small;
+}
+
+textarea {
+	width: $width-input-large;
+	max-width: $width-input-large;
+	min-width: $width-input-large;
+	min-height: 150px;
+}
+
+.check_wrap {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+
+	label {
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		margin-right: 2em;
+	}
+
+	input[type='checkbox'],
+	input[type='radio'] {
+		width: 24px;
+		height: 24px;
+		margin-right: -24px;
+
+		& + span {
+			display: block;
+			width: 24px;
+			height: 24px;
+			border: 2px solid $color-check;
+			padding: 2px;
+			position: relative;
+			margin-right: 0.5em;
+
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 3px;
+				top: 3px;
+				width: 14px;
+				height: 14px;
+				background-color: $color-check;
+				transform: scale(0);
+				transition: transform $duration;
+			}
+		}
+
+		&:checked + span:after {
+			transform: scale(1) !important;
+		}
+	}
+
+	input[type='radio'] {
+		& + span {
+			border-radius: 50%;
+
+			&:after {
+				border-radius: 50%;
+			}
+		}
+	}
+}
+
+.select_wrap {
+	display: inline-block;
+	position: relative;
+
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		right: 12px;
+		top: 50%;
+		border-style: solid;
+		border-width: 11px 7px 0;
+		margin-top: -5px;
+		border-color: $color-select transparent transparent;
+	}
+}
+
+@include sp {
+	input[type='text'],
+	input[type='tel'],
+	input[type='email'],
+	input[type='number'],
+	input[type='date'],
+	textarea,
+	select {
+		padding: 16px 20px;
+		width: $width-input-sp;
+	}
+
+	input[name^='old'] {
+		width: $width-input-sp-small;
+	}
+
+	textarea {
+		width: $width-input-sp;
+		max-width: $width-input-sp;
+		min-width: $width-input-sp;
+		min-height: 320px;
+	}
+
+	.check_wrap {
+		display: block;
+		margin: 15px 0 0;
+
+		label {
+			font-size: rem(24);
+			padding: 10px 30px 10px 0;
+		}
+
+		input[type='checkbox'],
+		input[type='radio'] {
+			& + span {
+				width: 40px;
+				height: 40px;
+				border-width: 3px;
+
+				&:after {
+					left: 6px;
+					top: 6px;
+					width: 22px;
+					height: 22px;
+				}
+			}
+		}
+	}
+
+	.select_wrap {
+		&:after {
+			right: 21px;
+			top: 50%;
+			border-width: 16px 10px 0;
+			margin-top: -8px;
+		}
+	}
+}

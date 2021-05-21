@@ -1,0 +1,77 @@
+@mixin wire_box01 {
+	max-width: 1100px;
+	margin: 0 auto 60px;
+	overflow: hidden;
+	@include container;
+
+	@include sp {
+		max-width: 690px;
+	}
+}
+
+@mixin wire_box02($color-bg: $palette-gray-light02) {
+	max-width: 1100px;
+	margin: 0 auto 60px;
+	background-color: $color-bg;
+	padding: 75px;
+	@include container;
+
+	@include sp {
+		max-width: 750px;
+		padding: 50px;
+	}
+}
+
+@mixin wire_box03($color-bg: $palette-gray-light02, $color-title: $palette-gray) {
+	max-width: 1100px;
+	margin: 0 auto 60px;
+	background-color: $color-bg;
+	padding: 50px 75px 75px;
+
+	> .title {
+		text-align: center;
+		font-size: rem(48);
+		font-weight: normal;
+		color: $color-title;
+		margin-bottom: 50px;
+	}
+
+	> .boxIn {
+		@include container;
+		background-color: #ffffff;
+		padding: 50px;
+		overflow: hidden;
+
+		> figure {
+			float: left;
+			margin: 5px 40px 0 0;
+		}
+	}
+
+	@include sp {
+		max-width: 750px;
+		padding: 50px;
+
+		> .title {
+			font-size: rem(36);
+		}
+
+		> .boxIn {
+			padding: 50px;
+
+			> figure {
+				float: none;
+				margin: 0 0 30px 0;
+
+				img {
+					width: 100%;
+					height: auto;
+				}
+			}
+		}
+	}
+}
+
+@mixin wire_box04 {
+	overflow-x: auto;
+}

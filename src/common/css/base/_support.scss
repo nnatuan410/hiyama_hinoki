@@ -1,0 +1,349 @@
+.mt00 {
+	margin-top: 0 !important;
+}
+
+.mt10 {
+	margin-top: 10px !important;
+}
+
+.mt15 {
+	margin-top: 15px !important;
+}
+
+.mt20 {
+	margin-top: 20px !important;
+}
+
+.mt25 {
+	margin-top: 25px !important;
+}
+
+.mt30 {
+	margin-top: 30px !important;
+}
+
+.mt40 {
+	margin-top: 40px !important;
+}
+
+.mt50 {
+	margin-top: 50px !important;
+}
+
+.mt60 {
+	margin-top: 60px !important;
+}
+
+.mt70 {
+	margin-top: 70px !important;
+}
+
+.mt80 {
+	margin-top: 80px !important;
+}
+
+.mb00 {
+	margin-bottom: 0 !important;
+}
+
+.mb10 {
+	margin-bottom: 10px !important;
+}
+
+.mb15 {
+	margin-bottom: 15px !important;
+}
+
+.mb20 {
+	margin-bottom: 20px !important;
+}
+
+.mb25 {
+	margin-bottom: 25px !important;
+}
+
+.mb30 {
+	margin-bottom: 30px !important;
+}
+
+.mb40 {
+	margin-bottom: 40px !important;
+}
+
+.mb50 {
+	margin-bottom: 50px !important;
+}
+
+.mb60 {
+	margin-bottom: 60px !important;
+}
+
+.mb70 {
+	margin-bottom: 70px !important;
+}
+
+.mb80 {
+	margin-bottom: 80px !important;
+}
+
+.wHalf {
+	width: 50% !important;
+}
+
+.wTri {
+	width: 33% !important;
+}
+
+.wQuart {
+	width: 25% !important;
+}
+
+.wFull {
+	width: 100% !important;
+}
+
+.poR {
+	position: relative !important;
+}
+
+.poS {
+	position: static !important;
+}
+
+.ofH {
+	overflow: hidden !important;
+}
+
+.ofV {
+	overflow: visible !important;
+}
+
+.dB {
+	display: block !important;
+}
+
+.dI {
+	display: inline !important;
+}
+
+.dIb {
+	display: inline-block !important;
+}
+
+.taR {
+	text-align: right !important;
+}
+
+.taC {
+	text-align: center !important;
+}
+
+.taL {
+	text-align: left !important;
+}
+
+.taJ {
+	text-align: justify !important;
+}
+
+.flL {
+	float: left !important;
+}
+
+.flR {
+	float: right !important;
+}
+
+.flN {
+	float: none !important;
+}
+
+.clB {
+	clear: both !important;
+}
+
+.flImgL {
+	float: left;
+	margin: 5px 40px 20px 0;
+}
+
+.flImgR {
+	float: right;
+	margin: 5px 0 20px 40px;
+}
+
+a.imgHover07 img {
+	-webkit-transition: opacity 0.2s ease-out;
+	transition: opacity 0.2s ease-out;
+}
+
+a.imgHover07:hover img {
+	opacity: 0.7;
+}
+
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+@include pc {
+	.onlySP {
+		display: none !important;
+	}
+}
+
+@include sp {
+	.onlyPC {
+		display: none !important;
+	}
+
+	.sp-mt00 {
+		margin-top: 0 !important;
+	}
+
+	.sp-mt10 {
+		margin-top: 10px !important;
+	}
+
+	.sp-mt20 {
+		margin-top: 20px !important;
+	}
+
+	.sp-mt30 {
+		margin-top: 30px !important;
+	}
+
+	.sp-mt40 {
+		margin-top: 40px !important;
+	}
+
+	.sp-mt50 {
+		margin-top: 50px !important;
+	}
+
+	.sp-mt60 {
+		margin-top: 60px !important;
+	}
+
+	.sp-mt70 {
+		margin-top: 70px !important;
+	}
+
+	.sp-mt80 {
+		margin-top: 80px !important;
+	}
+
+	.sp-mb00 {
+		margin-bottom: 0 !important;
+	}
+
+	.sp-mb10 {
+		margin-bottom: 10px !important;
+	}
+
+	.sp-mb20 {
+		margin-bottom: 20px !important;
+	}
+
+	.sp-mb30 {
+		margin-bottom: 30px !important;
+	}
+
+	.sp-mb40 {
+		margin-bottom: 40px !important;
+	}
+
+	.sp-mb50 {
+		margin-bottom: 50px !important;
+	}
+
+	.sp-mb60 {
+		margin-bottom: 60px !important;
+	}
+
+	.sp-mb70 {
+		margin-bottom: 70px !important;
+	}
+
+	.sp-mb80 {
+		margin-bottom: 80px !important;
+	}
+
+	.sp-wHalf {
+		width: 50% !important;
+	}
+
+	.sp-wTri {
+		width: 33% !important;
+	}
+
+	.sp-wQuart {
+		width: 25% !important;
+	}
+
+	.sp-wFull {
+		width: 100% !important;
+	}
+
+	.sp-poR {
+		position: relative !important;
+	}
+
+	.sp-poS {
+		position: static !important;
+	}
+
+	.sp-ofH {
+		overflow: hidden !important;
+	}
+
+	.sp-ofV {
+		overflow: visible !important;
+	}
+
+	.sp-dB {
+		display: block !important;
+	}
+
+	.sp-dI {
+		display: inline !important;
+	}
+
+	.sp-dIb {
+		display: inline-block !important;
+	}
+
+	.sp-taR {
+		text-align: right !important;
+	}
+
+	.sp-taC {
+		text-align: center !important;
+	}
+
+	.sp-taL {
+		text-align: left !important;
+	}
+
+	.sp-taJ {
+		text-align: justify !important;
+	}
+
+	.sp-flL {
+		float: left !important;
+	}
+
+	.sp-flR {
+		float: right !important;
+	}
+
+	.sp-flN {
+		float: none !important;
+	}
+
+	.sp-flImgN {
+		float: none;
+		margin: 0 auto 20px;
+	}
+}

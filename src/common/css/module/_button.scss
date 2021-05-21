@@ -1,0 +1,280 @@
+/* HTML
+<a class="ui_btn01">テキスト</a>
+*/
+@mixin ui_btn01(
+	// 動作タイプ (opacity,slide,gradation,line)
+	$type: 'opacity',
+	// アニメーション時間 (all)
+	$duration: 0.3s,
+	// グラデーション角度 (gradation)
+	$gradation-deg: 90deg,
+	// グラデーションの明るい色 (gradation)
+	$gradation-light: #ccc,
+	// グラデーションの暗い色 (gradation)
+	$gradation-dark: #999,
+	// 線の長さ (PC) (line)
+	$line-width: 19px,
+	// 線の長さ (SP) (line)
+	$line-width-sp: $line-width * 2
+) {
+	@if $type == 'slide' {
+		display: inline-block;
+		vertical-align: bottom;
+		padding: 5px 40px;
+		border: 2px solid #000;
+		position: relative;
+		overflow: hidden;
+		z-index: 1;
+		color: #000;
+		text-decoration: none;
+		transition: color $duration;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			right: 100%;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			transition: right $duration;
+			z-index: -1;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			right: 15px;
+			top: 50%;
+			margin-top: -5px;
+			border-style: solid;
+			border-width: 5px 0 5px 5px;
+			border-color: transparent transparent transparent #000;
+			transition: border-color $duration;
+		}
+
+		&:hover {
+			color: #ffffff;
+
+			&:before {
+				right: 0;
+			}
+
+			&:after {
+				border-color: transparent transparent transparent #fff;
+				transition: border-color $duration;
+			}
+		}
+
+		@include sp {
+			padding: 10px 40px;
+			border-width: 4px;
+
+			&:after {
+				right: 20px;
+				margin-top: -10px;
+				border-width: 10px 0 10px 10px;
+			}
+		}
+	} @else if $type== 'gradation' {
+		// 単位degの追加
+		@if type-of($gradation-deg) == 'number' and unitless($gradation-deg) {
+			$gradation-deg: $gradation-deg * 1deg;
+		}
+
+		$gradation-deg: $gradation-deg % 360;
+		display: inline-block;
+		padding: 7px 70px;
+		color: #ffffff;
+		position: relative;
+		z-index: 1;
+		text-decoration: none;
+		background: linear-gradient($gradation-deg, $gradation-dark 0%, $gradation-light 50%, $gradation-dark 100%);
+		background-size: 200% 200%;
+		transition: background-position $duration;
+		@if $gradation-deg<90deg {
+			background-position: left bottom;
+		} @else if $gradation-deg<180deg {
+			background-position: left top;
+		} @else if $gradation-deg<270deg {
+			background-position: right top;
+		} @else {
+			background-position: right bottom;
+		}
+
+		&:hover {
+			@if $gradation-deg<90deg {
+				background-position: right top;
+			} @else if $gradation-deg<180deg {
+				background-position: right bottom;
+			} @else if $gradation-deg<270deg {
+				background-position: left bottom;
+			} @else {
+				background-position: left top;
+			}
+		}
+
+		@include sp {
+			padding: 14px 140px;
+		}
+	} @else if $type == 'line' {
+		display: inline-block;
+		padding: 6px 72px;
+		border: 1px solid #000;
+		font-size: rem(30);
+		color: #000;
+		text-decoration: none;
+		position: relative;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: $line_width;
+			height: 1px;
+			background-color: #000;
+		}
+
+		&:hover:before {
+			animation: btn01-line 0.4s ease-out;
+		}
+
+		@keyframes btn01-line {
+			0% {
+				left: 0;
+				width: $line-width;
+			}
+
+			50% {
+				left: $line-width;
+				width: 0;
+			}
+
+			51% {
+				left: 0;
+				width: 0;
+			}
+
+			100% {
+				left: 0;
+				width: $line-width;
+			}
+		}
+
+		@include sp {
+			padding: 12px 150px;
+			border-width: 2px;
+
+			&:before {
+				height: 2px;
+				margin-top: -1px;
+				width: $line-width-sp;
+			}
+
+			@keyframes btn01-line {
+				0% {
+					left: 0;
+					width: $line-width-sp;
+				}
+
+				50% {
+					left: $line-width-sp;
+					width: 0;
+				}
+
+				51% {
+					left: 0;
+					width: 0;
+				}
+
+				100% {
+					left: 0;
+					width: $line-width-sp;
+				}
+			}
+		}
+	} @else {
+		transition: opacity $duration;
+		background-color: #000;
+		color: #ffffff;
+		text-decoration: none;
+		padding: 8px 40px;
+
+		&:hover {
+			opacity: 0.7;
+		}
+
+		@include sp {
+			padding: 16px 60px;
+		}
+	}
+}
+
+/* HTML
+<a class="ui_btn02">テキスト<span class="arrow"></span></a>
+*/
+@mixin ui_btn02(
+	// 動作タイプ ()
+	$type: '',
+	// アニメーション時間 (all)
+	$duration: 0.3s
+) {
+	display: inline-block;
+	padding: 10px 100px;
+	border: 1px solid #000;
+	color: #000;
+	text-decoration: none;
+	transition: all $duration;
+
+	.arrow {
+		display: inline-block;
+		margin-left: 0.5em;
+		position: relative;
+
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			display: block;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			transition: opacity $duration;
+		}
+
+		&:after {
+			opacity: 0;
+			z-index: 1;
+		}
+	}
+
+	&:hover {
+		background-color: #f33;
+		border-color: #f33;
+		color: #ffffff;
+
+		.arrow {
+			&:before {
+				opacity: 0;
+			}
+
+			&:after {
+				opacity: 1;
+			}
+		}
+	}
+
+	@include sp {
+		width: 100%;
+		padding: 20px auto;
+		text-align: center;
+	}
+}

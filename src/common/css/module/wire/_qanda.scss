@@ -1,0 +1,77 @@
+@mixin wire_qanda01($color-question-bg: $palette-gray, $color-answer-bg: $palette-gray-light02) {
+	> li {
+		.question {
+			background-color: $color-question-bg;
+			padding: 17px 82px;
+			position: relative;
+
+			&:before {
+				content: 'Q.';
+				position: absolute;
+				left: 19px;
+				top: 14px;
+				font-size: rem(72);
+				line-height: 1;
+				letter-spacing: 0.1em;
+				color: #ffffff;
+			}
+
+			> .title {
+				font-size: rem(36);
+				line-height: 1.6667;
+				font-weight: normal;
+				color: #ffffff;
+			}
+		}
+
+		.answer {
+			background-color: $color-answer-bg;
+			padding: 17px 82px;
+			position: relative;
+
+			&:before {
+				content: 'A.';
+				position: absolute;
+				left: 19px;
+				top: 14px;
+				font-size: rem(72);
+				line-height: 1;
+				letter-spacing: 0.1em;
+				color: $palette-gray;
+			}
+		}
+
+		&:nth-child(n + 2) {
+			margin-top: 25px;
+		}
+	}
+
+	@include sp {
+		> li {
+			.question {
+				padding: 30px 50px 30px 130px;
+
+				&:before {
+					left: 30px;
+					top: 50%;
+					margin-top: -35px;
+					font-size: rem(60);
+				}
+			}
+
+			.answer {
+				padding: 40px 40px 40px 130px;
+
+				&:before {
+					left: 30px;
+					top: 35px;
+					font-size: rem(60);
+				}
+			}
+
+			&:nth-child(n + 2) {
+				margin-top: 40px;
+			}
+		}
+	}
+}

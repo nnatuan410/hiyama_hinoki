@@ -1,0 +1,147 @@
+@mixin ui_table01($bg_thead: #000, $bg_tbody_th: #000, $bd_th: #000, $bd_td: #000) {
+	width: 100%;
+	border-collapse: separate;
+	margin: 30px 0;
+
+	th,
+	td {
+		font-weight: normal;
+		padding: 7px 25px 6px;
+		background-color: #fff;
+		vertical-align: middle;
+	}
+
+	thead {
+		th,
+		td {
+			color: #fff;
+			background-color: $bg_thead;
+			text-align: center;
+		}
+	}
+
+	tbody {
+		th {
+			color: #fff;
+			background-color: $bg_tbody_th;
+			text-align: left;
+			border: 1px solid $bd_th;
+			border-width: 1px 0 0;
+		}
+
+		td {
+			border: 1px solid $bd_td;
+			border-width: 1px 0 0;
+		}
+
+		tr:last-child th,
+		tr:last-child td {
+			border-width: 1px 0;
+		}
+	}
+
+	@include sp {
+		margin: 30px 0;
+
+		th,
+		td {
+			padding: 13px 35px;
+		}
+
+		tbody {
+			th,
+			td {
+				border-width: 2px 0 0;
+			}
+
+			tr:last-child th,
+			tr:last-child td {
+				border-width: 2px 0;
+			}
+		}
+	}
+}
+
+@mixin ui_table02($bg_thead: #000, $bg_tbody_th: #000, $bd_th: #000, $bd_td: #000) {
+	width: 100%;
+	border-collapse: separate;
+	margin: 30px 0;
+	position: relative;
+
+	th,
+	td {
+		font-weight: normal;
+		padding: 15px 10px 15px 25px;
+		background-color: #fff;
+		vertical-align: middle;
+	}
+
+	thead {
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 16px 16px 0 0;
+			border-color: #ffffff transparent transparent transparent;
+		}
+
+		th,
+		td {
+			font-size: rem(36);
+			color: #fff;
+			background-color: $bg_thead;
+			text-align: center;
+		}
+	}
+
+	tbody {
+		th {
+			width: 210px;
+			background-color: $bg_tbody_th;
+			text-align: left;
+			border: 1px solid $bd_th;
+			border-width: 1px 0 0;
+		}
+
+		td {
+			border: 1px solid $bd_td;
+			border-width: 1px 0 0;
+		}
+
+		tr:last-child th,
+		tr:last-child td {
+			border-width: 1px 0;
+		}
+	}
+
+	@include sp {
+		margin: 30px 0;
+
+		th,
+		td {
+			width: 100% !important;
+			padding: 25px 35px;
+			display: block;
+		}
+
+		tbody {
+			th,
+			td {
+				border-width: 2px 0 0;
+			}
+
+			th {
+				text-align: center;
+			}
+
+			tr:last-child th,
+			tr:last-child td {
+				border-width: 2px 0;
+			}
+		}
+	}
+}

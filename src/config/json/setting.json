@@ -1,0 +1,94 @@
+{
+	"common": {
+		"host": "https://",
+		"domain": "www.u-active.jp",
+		"site-title": "Normal01｜UI-CODE",
+		"keyword": "キーワード,キーワード,キーワード,キーワード,キーワード",
+		"description": "サイトの説明が入ります。サイトの説明が入ります。サイトの説明が入ります。サイトの説明が入ります。サイトの説明が入ります。サイトの説明が入ります。サイトの説明が入ります。",
+		"home-title": "<span class=\"onlyPC\">Normal01</span>ホーム",
+		"seo-text": "SEOテキストSEOテキストSEOテキストSEOテキストSEOテキストSEOテキストSEOテキストSEOテキストSEOテキストSEOテキスト",
+		"noindex": false
+	},
+	"directory": {
+		"charm": {
+			"title": "当院の5つの特徴",
+			"title-en": "Charm"
+		},
+		"staff": {
+			"title": "院長・スタッフ紹介",
+			"title-en": "Staff"
+		},
+		"access": {
+			"title": "医院紹介・アクセス",
+			"title-en": "Access"
+		},
+		"recruit": {
+			"title": "求人情報",
+			"title-en": "Recruit"
+		},
+		"mtm": {
+			"title": "MTM（診療の流れ）",
+			"title-en": "MTM"
+		},
+		"pedodontics": {
+			"title": "小児歯科",
+			"title-en": "Pedodontics"
+		},
+		"preventive": {
+			"title": "予防歯科",
+			"title-en": "PreventiveCare"
+		},
+		"periodontics": {
+			"title": "歯周病治療",
+			"title-en": "Periodontics"
+		},
+		"implant": {
+			"title": "インプラント治療",
+			"title-en": "Implant"
+		},
+		"cosmetic": {
+			"title": "審美歯科",
+			"title-en": "CosmeticDentistry"
+		},
+		"whitening": {
+			"title": "ホワイトニング",
+			"title-en": "TeethWhitening"
+		},
+		"oral": {
+			"title": "口腔外科",
+			"title-en": "OralSurgery"
+		},
+		"cerec": {
+			"title": "セレックについて",
+			"title-en": "Cerec"
+		},
+		"micro": {
+			"title": "マイクロスコープについて",
+			"title-en": "Microscope"
+		},
+		"price": {
+			"title": "治療費について",
+			"title-en": "Price"
+		},
+		"cases": {
+			"title": "治療症例集",
+			"title-en": "cases"
+		},
+		"news": {
+			"title": "お知らせ",
+			"title-en": "News"
+		},
+		"blog": {
+			"title": "スタッフブログ",
+			"title-en": "Blog"
+		},
+		"contact": {
+			"title": "お問い合わせ",
+			"title-en": "Contact"
+		},
+		"equipment": {
+			"title": "院内設備",
+			"title-en": "Equipment"
+		}
+	}
+}

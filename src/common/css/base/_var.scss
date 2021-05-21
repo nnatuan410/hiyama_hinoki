@@ -1,0 +1,254 @@
+/* variable
+-------------------------------------------------------------------------------------------------------------------- */
+$duration: 0.3s;
+
+/* mixin
+-------------------------------------------------------------------------------------------------------------------- */
+$break01: 750px;
+
+@mixin sp {
+	@media (max-width: $break01) {
+		@content;
+	}
+}
+
+@mixin pc {
+	@media (min-width: $break01 + 1) {
+		@content;
+	}
+}
+
+@mixin mq($min: null, $max: null) {
+	@if type-of($min) == number {
+		@if type-of($max) == number {
+			@media (min-width: $min + 1px) and (max-width: $max) {
+				@content;
+			}
+		} @else {
+			@media (min-width: $min + 1px) {
+				@content;
+			}
+		}
+	} @else {
+		@if type-of($max) == number {
+			@media (max-width: $max) {
+				@content;
+			}
+		} @else {
+			@content;
+		}
+	}
+}
+
+@mixin retina {
+	@media (min-width: $break01 + 1) and (min-resolution: 2dppx) {
+		@content;
+	}
+}
+
+@mixin ie {
+	@at-root _:-ms-input-placeholder,
+		:root & {
+		@content;
+	}
+}
+
+@mixin container {
+	&:after,
+	> p:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	> *:first-child {
+		margin-top: 0;
+	}
+
+	> *:last-child {
+		margin-bottom: 0;
+	}
+}
+
+@mixin bgi($src, $sp: '_sp', $retina: '@2x', $lazy: false, $webp: false) {
+	@if $src {
+		@if $lazy {
+			$selectorArray: selector-parse(&);
+			$lazySelector: '';
+			@each $selector in $selectorArray {
+				$selector: quote($selector);
+				$pos: str-length($selector) + 1;
+				@if str-index($selector, ' ') {
+					$pos: str-index($selector, ' ');
+				}
+				@if str-index($selector, ':') {
+					$pos: min($pos, str-index($selector, ':'));
+				}
+				$selector: str-insert($selector, $lazy, $pos);
+				@if str-length($lazySelector) >0 {
+					$lazySelector: $lazySelector + ', ';
+				}
+				$lazySelector: $lazySelector + $selector;
+			}
+			@at-root #{unquote($lazySelector)} {
+				background-image: url($src);
+				@if $sp {
+					@include sp {
+						background-image: url(str-insert($src, $sp, str-length($src)-3));
+					}
+				}
+				@if str-index($src, '.jpg') or str-index($src, '.png') {
+					@if $retina {
+						@include retina {
+							background-image: url(str-insert($src, $retina, str-length($src)-3));
+						}
+					}
+					@if $webp {
+						#{$webp} & {
+							background-image: url($src + '.webp');
+							@if $retina {
+								@include retina {
+									background-image: url(str-insert($src, $retina, str-length($src)-3) + '.webp');
+								}
+							}
+							@if $sp {
+								@include sp {
+									background-image: url(str-insert($src, $sp, str-length($src)-3) + '.webp');
+								}
+							}
+						}
+					}
+				}
+			}
+		} @else {
+			background-image: url($src);
+			@if $sp {
+				@include sp {
+					background-image: url(str-insert($src, $sp, str-length($src)-3));
+				}
+			}
+			@if str-index($src, '.jpg') or str-index($src, '.png') {
+				@if $retina {
+					@include retina {
+						background-image: url(str-insert($src, $retina, str-length($src)-3));
+					}
+				}
+				@if $webp {
+					#{$webp} & {
+						background-image: url($src + '.webp');
+						@if $retina {
+							@include retina {
+								background-image: url(str-insert($src, $retina, str-length($src)-3) + '.webp');
+							}
+						}
+						@if $sp {
+							@include sp {
+								background-image: url(str-insert($src, $sp, str-length($src)-3) + '.webp');
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@mixin deco {
+	content: '';
+	display: block;
+	position: absolute;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	pointer-events: none;
+}
+
+@mixin font-smoothing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin font-gothic {
+	font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
+
+	@include ie {
+		font-family: Meiryo, 'MS PGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
+	}
+}
+
+@mixin font-mincho {
+	font-family: 'Hiragino Mincho ProN', 'YuMincho', 'Yu Mincho', 'MS PMincho', serif;
+}
+
+@mixin webfont-ja01 {
+	font-family: fot-seurat-pron, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+@mixin webfont-en01 {
+	font-family: din-2014, sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+@mixin webfont-en02 {
+	font-family: Prompt, sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+@mixin vertical-rl {
+	-webkit-writing-mode: vertical-rl;
+	-ms-writing-mode: tb-rl;
+	writing-mode: vertical-rl;
+
+	.combine {
+		-webkit-text-combine: horizontal;
+		-moz-text-combine-upright: all;
+		-ms-text-combine-horizontal: all;
+		text-combine-upright: all;
+	}
+}
+
+@mixin vertical-lr {
+	-webkit-writing-mode: vertical-lr;
+	-ms-writing-mode: tb-lr;
+	writing-mode: vertical-lr;
+
+	.combine {
+		-webkit-text-combine: horizontal;
+		-moz-text-combine-upright: all;
+		-ms-text-combine-horizontal: all;
+		text-combine-upright: all;
+	}
+}
+
+@mixin horizontal-tb {
+	-webkit-writing-mode: horizontal-tb;
+	-ms-writing-mode: lr-tb;
+	writing-mode: horizontal-tb;
+}
+
+/* function
+-------------------------------------------------------------------------------------------------------------------- */
+
+@function rem($size-design: 30) {
+	$size-design: $size-design / ($size-design * 0 + 1);
+	@return $size-design / 30 * 1rem;
+}
+
+@function stripe-gradient($direction, $colors...) {
+	$colorLength: length($colors);
+	$stopColor: ();
+	$stopPos: ();
+	@for $i from 1 through $colorLength {
+		$thisColor: nth($colors, $i);
+		@if ($thisColor == transparent) {
+			$thisColor: rgba(#ffffff, 0);
+		}
+		$stopColor: join($stopColor, ($thisColor, $thisColor));
+		$stopPos: join($stopPos, (percentage(1 / $colorLength * ($i - 1)), percentage(1 / $colorLength * $i)));
+	}
+	@return linear-gradient($direction, zip($stopColor, $stopPos));
+}

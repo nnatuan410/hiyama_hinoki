@@ -1,0 +1,4 @@
+# 隠しファイルを除外
++ .htaccess
++ .htpasswd
+- .*

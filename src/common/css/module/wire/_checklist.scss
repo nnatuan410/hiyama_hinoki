@@ -1,0 +1,35 @@
+@mixin wire_checklist01 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	> li {
+		flex: 0 0 auto;
+		width: 100%;
+		font-size: rem(36);
+		padding: 11px 20px 11px 40px;
+		position: relative;
+
+		&:before {
+			@include deco;
+			left: 0;
+			top: 50%;
+			width: 30px;
+			height: 30px;
+			margin-top: -14px;
+			@include bgi($src: '../img/ico_check02.png', $sp: false);
+		}
+	}
+
+	@include sp {
+		> li {
+			padding: 20px 0 20px 100px;
+
+			&:before {
+				width: 60px;
+				height: 60px;
+				margin-top: -25px;
+			}
+		}
+	}
+}

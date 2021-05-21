@@ -1,0 +1,16 @@
+# wordpressのシステムファイルを除外
++ /cms/wp-content/themes/
+- /cms/wp-content/*
++ /cms/wp-content/
+- /cms/wp-*/
+- /cms/wp-*.php
+- /cms/index.php
+- /cms/license.txt
+- /cms/readme.html
+- /cms/xmlrpc.php
+
+# configの一部ファイルを除外
+- /config/calendar/holiday.json
+
+# 隠しファイルを.htaccessを含め除外
+- .*

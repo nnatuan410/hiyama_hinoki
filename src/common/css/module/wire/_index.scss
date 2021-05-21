@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+@import '../../base/var';
+
+$palette-primary: #004bb1;
+$palette-primary-light01: #f2f6fb;
+$palette-gray: #707f89;
+$palette-gray-dark01: #3b4043;
+$palette-gray-light01: #cdd6dd;
+$palette-gray-light02: #f0f2f3;
+$length-line01: 2.0667rem;
+$length-content: 80px;
+$length-content_sp: 100px;
+
+@import 'table';
+@import 'box';
+@import 'gallery';
+@import 'flow';
+@import 'qanda';
+@import 'checklist';
+@import 'tab';
+@import 'video';
+@import 'title';

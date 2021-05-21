@@ -1,0 +1,741 @@
+/* site common style
+-------------------------------------------------------------------------------- */
+
+#sideContents {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+/* content style
+  -------------------------------------------------------------------------------- */
+
+/* column
+  ---------------------------------------- */
+
+.ui_column01 > .col02 {
+	width: calc(100% / 2 - 100px / 2);
+	margin-bottom: 70px;
+}
+
+/* heading
+  ---------------------------------------- */
+
+.ui_tit02 {
+	margin-bottom: 25px;
+
+	a {
+		text-decoration: none;
+		color: #ffffff;
+	}
+}
+
+/* single
+  ---------------------------------------- */
+
+.single01 {
+	width: 920px;
+	margin: 0 auto;
+
+	> p {
+		margin: 25px 0;
+	}
+}
+
+/* btnDetali
+  ---------------------------------------- */
+
+.btnDetail {
+	margin-top: 25px;
+	text-align: center;
+
+	.ui_btn01 {
+		font-size: rem(36);
+		padding: 8px 50px;
+
+		&:before {
+			border-width: 60px 20px 0 700px;
+		}
+
+		&:hover:before {
+			right: -20px;
+		}
+	}
+}
+
+/* post_meta
+  ---------------------------------------- */
+
+.post_meta {
+	margin-bottom: 19px;
+	display: flex;
+	flex-wrap: wrap;
+
+	> {
+		p {
+			padding: 4px 16px;
+			margin-bottom: 6px;
+			color: #fff;
+		}
+
+		.date {
+			margin-right: 8px;
+			background-color: #22ac38;
+		}
+
+		.cat {
+			background-color: #0faf89;
+
+			a {
+				color: #fff;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+}
+
+.single01 .post_meta {
+	margin: 0 0 20px;
+
+	p {
+		margin: 0 0 10px;
+	}
+
+	> .date {
+		margin-right: 15px;
+	}
+}
+
+/* img
+  ---------------------------------------- */
+
+.thumbnailWrap {
+	display: block;
+	text-align: center;
+	margin-bottom: 20px;
+
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
+.single01 img {
+	&[class*='wp-image'] {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
+	&.alignnone {
+		display: inline-block;
+	}
+
+	&.alignright {
+		float: right;
+		margin: 5px 0 20px 60px;
+	}
+
+	&.aligncenter {
+		float: none;
+		margin: 0 auto 25px;
+	}
+
+	&.alignleft {
+		float: left;
+		margin: 5px 60px 20px 0;
+	}
+}
+
+.single01 .gallery {
+	margin-bottom: 30px !important;
+
+	.gallery-item {
+		margin-top: 30px !important;
+
+		.gallery-icon {
+			padding: 0 10px;
+
+			img {
+				max-width: 100%;
+				width: auto;
+				height: auto;
+				border: none !important;
+			}
+		}
+
+		.gallery-caption {
+			padding: 10px 10px 0;
+			line-height: 1.5;
+		}
+	}
+}
+
+/* pager index
+  ------------------------------------------ */
+
+#pager {
+	display: flex;
+	justify-content: center;
+
+	> {
+		* {
+			display: block;
+			font-size: rem(36);
+			width: 54px;
+			height: 54px;
+			line-height: 50px;
+			text-align: center;
+			border: 2px solid #22ac38;
+			color: #22ac38;
+			text-decoration: none;
+
+			&:nth-child(n + 2) {
+				margin-left: 10px;
+			}
+		}
+
+		.dots {
+			border-color: transparent;
+			width: 30px;
+		}
+
+		.prev,
+		.next {
+			width: 120px;
+		}
+
+		a {
+			position: relative;
+			z-index: 1;
+			overflow: hidden;
+			transition: color $duration;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				right: 100%;
+				top: 0;
+				border: 1px solid #22ac38;
+				border-width: 120px 40px 0 500px;
+				border-color: #22ac38 transparent transparent #22ac38;
+				transition: right $duration;
+				z-index: -1;
+			}
+
+			&:hover {
+				color: #fff;
+			}
+		}
+
+		.current {
+			color: #fff;
+		}
+
+		a:hover:before {
+			right: -40px;
+		}
+
+		.current {
+			background-color: #22ac38;
+		}
+	}
+
+	&.single > a {
+		width: 240px;
+	}
+}
+
+/* pager single
+  ------------------------------------------ */
+
+/* aside style
+  -------------------------------------------------------------------------------- */
+
+/* aside global
+  ---------------------------------------- */
+
+#asideBoxWrap {
+	margin: 60px 0 100px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.asideBox {
+	flex: 0 0 auto;
+	width: 320px;
+}
+
+/* aside list
+  ---------------------------------------- */
+
+.asideList li {
+	border-top: 1px solid #dfdfdf;
+	background-color: #ffffff;
+
+	&:last-child {
+		border-bottom: 1px solid #dfdfdf;
+	}
+
+	a {
+		display: block;
+		padding: 11px 10px 11px 42px;
+		color: #000;
+		text-decoration: none;
+		position: relative;
+		z-index: 1;
+		overflow: hidden;
+		transition: color $duration;
+
+		&:hover {
+			color: #ffffff;
+		}
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 0;
+			right: 100%;
+			border: 1px solid #22ac38;
+			border-width: 300px 100px 0 750px;
+			border-color: #22ac38 transparent transparent #22ac38;
+			z-index: -1;
+			transition: right $duration;
+		}
+
+		&:hover:before {
+			right: -100px;
+		}
+
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			left: 22px;
+			top: 50%;
+			margin-top: -5px;
+			border: 5px solid #22ac38;
+			border-width: 5px 0 5px 5px;
+			border-color: transparent transparent transparent #22ac38;
+			transition: border-color $duration;
+		}
+
+		&:hover:after {
+			border-color: transparent transparent transparent #fff;
+		}
+	}
+}
+
+/* news
+  ---------------------------------------- */
+
+.asideBox.wFull {
+	margin-bottom: 60px;
+	order: -1;
+}
+
+.asideListNews ul {
+	display: flex;
+
+	li {
+		width: 245px;
+		margin-left: 40px;
+
+		&:nth-child(4n + 1) {
+			margin-left: 0;
+		}
+
+		a {
+			display: block;
+			width: 100%;
+			line-height: 1.5;
+			text-decoration: none;
+			color: #000000;
+			font-size: rem(36);
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+			img {
+				display: block;
+				width: 100%;
+				height: auto;
+				margin-bottom: 15px;
+				transition: opacity $duration;
+			}
+
+			&:hover img {
+				opacity: 0.7;
+			}
+
+			p {
+				text-align: center;
+			}
+		}
+	}
+}
+
+/* aside calender
+  ------------------------------------------ */
+
+#wp-calendar {
+	width: 100%;
+	line-height: 1;
+
+	caption {
+		font-size: rem(40);
+		color: #422b2c;
+		margin-bottom: 12px;
+	}
+
+	th,
+	td {
+		padding: 15px 0;
+		text-align: center;
+		width: 14.29%;
+		width: calc(100% / 7);
+		color: #000;
+		background-color: #ffffff;
+	}
+
+	a {
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	thead th {
+		background-color: #422b2c;
+		color: #ffffff;
+		font-weight: normal;
+		padding: 12px 0;
+	}
+
+	tbody td {
+		position: relative;
+
+		a {
+			display: block;
+			position: relative;
+			z-index: 1;
+			color: #fff;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				width: 32px;
+				height: 32px;
+				margin: -16px;
+				background-color: #cfa972;
+				z-index: -1;
+			}
+		}
+	}
+
+	tfoot {
+		td {
+			background-color: #422b2c;
+			padding: 12px 0;
+		}
+
+		a {
+			color: #ffffff;
+		}
+	}
+}
+
+/* #wp-calendar tbody:before,
+  #wp-calendar tbody:after {
+	  content: "";
+	  display: table-row;
+	  height: 6px;
+  } */
+
+@include sp {
+	/* column
+		---------------------------------------- */
+
+	.ui_column01 > .col02 {
+		width: 100%;
+		margin-bottom: 100px !important;
+	}
+
+	/* heading
+		---------------------------------------- */
+
+	.ui_tit02 {
+		margin-bottom: 30px;
+	}
+
+	/* single
+		---------------------------------------- */
+
+	.single01 {
+		width: 100%;
+
+		> p {
+			margin: 30px 0;
+		}
+	}
+
+	/* btnDetali
+		---------------------------------------- */
+
+	.btnDetail .ui_btn01 {
+		padding: 12px 100px;
+
+		&:before {
+			border-width: 120px 40px 0 600px;
+		}
+
+		&:hover:before {
+			right: -40px;
+		}
+
+		&:after {
+			right: 30px;
+		}
+	}
+
+	/* post_meta
+		---------------------------------------- */
+
+	.post_meta {
+		margin-bottom: 20px;
+
+		> {
+			p {
+				padding: 5px 19px;
+				margin-bottom: 10px;
+			}
+
+			.date {
+				margin-right: 15px;
+			}
+		}
+	}
+
+	.single01 .post_meta {
+		margin: 0 0 20px;
+
+		> {
+			p {
+				margin: 0 0 10px;
+			}
+
+			.date {
+				margin-right: 20px;
+			}
+		}
+	}
+
+	/* img
+		---------------------------------------- */
+
+	.thumbnailWrap {
+		margin-bottom: 25px;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.single01 img {
+		&[class*='wp-image'] {
+			width: 100%;
+		}
+
+		&.alignright,
+		&.aligncenter,
+		&.alignnone,
+		&.alignleft {
+			display: block;
+			float: none;
+			margin: 30px auto;
+		}
+	}
+
+	.single01 .gallery {
+		margin-bottom: 40px !important;
+
+		.gallery-item {
+			float: none !important;
+			width: 100% !important;
+			margin-top: 40px !important;
+
+			.gallery-caption {
+				font-size: rem(30);
+				margin-top: 15px;
+			}
+		}
+
+		br {
+			display: none;
+		}
+	}
+
+	/* pager
+		---------------------------------------- */
+
+	#pager {
+		> {
+			* {
+				height: 80px;
+				line-height: 74px;
+				border-width: 3px;
+				display: none;
+				font-size: rem(30);
+
+				&:nth-child(n + 2) {
+					margin-left: 10px;
+				}
+			}
+
+			.current {
+				display: block;
+				width: 300px;
+			}
+
+			.prev,
+			.next {
+				display: block;
+				width: 150px;
+			}
+		}
+
+		&.single > a {
+			display: block;
+			width: 200px;
+		}
+	}
+
+	/* pager single
+		------------------------------------------ */
+
+	/* aside style
+		-------------------------------------------------------------------------------- */
+
+	/* aside global
+		---------------------------------------- */
+
+	#sideContents {
+		width: 750px;
+		margin: 0 auto;
+	}
+
+	#asideBoxWrap {
+		display: block;
+		width: 750px;
+		margin: 0 0 157px;
+		padding: 0 45px;
+	}
+
+	.asideBox {
+		width: 100%;
+
+		+ .asideBox {
+			margin: 80px 0 0;
+		}
+	}
+
+	/* aside list
+		---------------------------------------- */
+
+	.asideList li a {
+		padding: 20px 30px 20px 65px;
+
+		&:after {
+			left: 30px;
+			margin-top: -10px;
+			border-width: 10px 0 10px 10px;
+		}
+	}
+
+	/* news
+		---------------------------------------- */
+
+	.asideBox.wFull {
+		margin-bottom: 0;
+	}
+
+	.asideListNews {
+		margin-bottom: 60px;
+
+		ul {
+			display: block;
+
+			li {
+				width: 100%;
+				margin: 0 0 35px;
+
+				a {
+					display: flex;
+					align-items: center;
+
+					img {
+						width: 220px;
+						margin: 0 25px 0 0;
+					}
+
+					p {
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+
+	/* aside calender
+		------------------------------------------ */
+
+	#wp-calendar {
+		caption {
+			font-size: rem(36);
+			margin: 10px 0 20px;
+		}
+
+		th,
+		td {
+			padding: 25px 0;
+			font-size: rem(36);
+		}
+
+		thead th,
+		tfoot td {
+			padding: 22px 0;
+		}
+
+		tbody {
+			&:before,
+			&:after {
+				height: 10px;
+			}
+
+			td {
+				&:nth-child(n + 2):before {
+					left: -1px;
+					top: 20px;
+					bottom: 20px;
+					width: 2px;
+				}
+
+				a:before {
+					width: 60px;
+					height: 60px;
+					margin: -30px;
+				}
+			}
+		}
+	}
+}

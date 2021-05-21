@@ -1,0 +1,21 @@
+@mixin wire_video01 {
+	max-width: 720px;
+	margin: 50px auto;
+
+	> .video {
+		margin-bottom: 30px;
+	}
+
+	@include sp {
+		max-width: 690px;
+
+		> .video {
+			margin-bottom: 30px;
+
+			iframe {
+				width: 100%;
+				height: 450px;
+			}
+		}
+	}
+}
