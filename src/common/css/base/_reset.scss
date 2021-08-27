@@ -172,7 +172,8 @@ input,
 select {
 	vertical-align: middle;
 }
-
 img {
+	max-width: 100%;
+	height: auto;
 	vertical-align: bottom;
 }

@@ -178,261 +178,261 @@ class UiTab {
 		if (typeof callback === 'function') callback();
 	}
 }
-class UiModal {
-	constructor(tablist, tabpanellist, option) {
-		this.param = {
-			type: 'modal', // modal, gallery
-			duration: 400, // アニメーションスピード
-			classLeave: 'leave', // 非表示アニメーション中のクラス
-			classEnter: 'enter', // 表示アニメーション中のクラス
-			indexAttr: 'data-tab-index',
-			loop: true,
-			btnClose: true,
-			btnPrev: true,
-			btnNext: true,
-			triggerSelector: '[role="tab"]',
-			targetSelector: '[role="tabpanel"]',
-		};
-		this.param = {...this.param, ...option};
+// class UiModal {
+// 	constructor(tablist, tabpanellist, option) {
+// 		this.param = {
+// 			type: 'modal', // modal, gallery
+// 			duration: 400, // アニメーションスピード
+// 			classLeave: 'leave', // 非表示アニメーション中のクラス
+// 			classEnter: 'enter', // 表示アニメーション中のクラス
+// 			indexAttr: 'data-tab-index',
+// 			loop: true,
+// 			btnClose: true,
+// 			btnPrev: true,
+// 			btnNext: true,
+// 			triggerSelector: '[role="tab"]',
+// 			targetSelector: '[role="tabpanel"]',
+// 		};
+// 		this.param = {...this.param, ...option};
 
-		if (!tablist) tablist = document.querySelector('.tablist');
-		if (!tabpanellist) tabpanellist = document.querySelector('.tabpanellist');
-		if (!option) option = {};
-		if (typeof tablist === 'string') {
-			this.tablist = document.querySelector(tablist);
-		} else {
-			this.tablist = tablist;
-		}
-		this.trigger = this.tablist.querySelectorAll(this.param.triggerSelector);
+// 		if (!tablist) tablist = document.querySelector('.tablist');
+// 		if (!tabpanellist) tabpanellist = document.querySelector('.tabpanellist');
+// 		if (!option) option = {};
+// 		if (typeof tablist === 'string') {
+// 			this.tablist = document.querySelector(tablist);
+// 		} else {
+// 			this.tablist = tablist;
+// 		}
+// 		this.trigger = this.tablist.querySelectorAll(this.param.triggerSelector);
 
-		if (this.param.type === 'gallery') {
-			this.tabpanellist = document.createElement('div');
-			this.tabpanellist.classList.add('tabpanellist');
-			for (let i = 0; i < this.trigger.length; i++) {
-				this.tabpanellist.insertAdjacentHTML('beforeend', '<div role="tabpanel"><img src="' + this.trigger[i].href + '"></div>');
-			}
-		} else {
-			if (typeof tabpanellist === 'string') {
-				this.tabpanellist = document.querySelector(tabpanellist);
-			} else {
-				this.tabpanellist = tabpanellist;
-			}
-		}
-		if (this.param.btnClose) {
-			const btnClose = document.createElement('a');
-			btnClose.href = '#';
-			btnClose.classList.add('modalclose');
-			btnClose.setAttribute('aria-label', '閉じる');
-			btnClose.addEventListener('click', (e) => {
-				e.preventDefault();
-				e.stopPropagation();
-				this.modalClose();
-			});
-			this.tabpanellist.insertAdjacentElement('beforeend', btnClose);
-		}
-		if (this.param.btnPrev) {
-			const btnPrev = document.createElement('a');
-			btnPrev.href = '#';
-			btnPrev.classList.add('tabprev');
-			btnPrev.setAttribute('aria-label', '前へ');
-			btnPrev.addEventListener('click', (e) => {
-				e.preventDefault();
-				e.stopPropagation();
-				this.tabPrev();
-			});
-			this.tabpanellist.insertAdjacentElement('beforeend', btnPrev);
-		}
-		if (this.param.btnNext) {
-			const btnNext = document.createElement('a');
-			btnNext.href = '#';
-			btnNext.classList.add('tabnext');
-			btnNext.setAttribute('aria-label', '次へ');
-			btnNext.addEventListener('click', (e) => {
-				e.preventDefault();
-				e.stopPropagation();
-				this.tabNext();
-			});
-			this.tabpanellist.insertAdjacentElement('beforeend', btnNext);
-		}
-		document.body.insertAdjacentElement('beforeend', this.tabpanellist);
-		this.target = this.tabpanellist.querySelectorAll(this.param.targetSelector);
-		this.modal = this.tabpanellist;
-		this.currentIndex = -1;
-		this.prevIndex = -1;
-		this.modalIsOpen = false;
+// 		if (this.param.type === 'gallery') {
+// 			this.tabpanellist = document.createElement('div');
+// 			this.tabpanellist.classList.add('tabpanellist');
+// 			for (let i = 0; i < this.trigger.length; i++) {
+// 				this.tabpanellist.insertAdjacentHTML('beforeend', '<div role="tabpanel"><img src="' + this.trigger[i].href + '"></div>');
+// 			}
+// 		} else {
+// 			if (typeof tabpanellist === 'string') {
+// 				this.tabpanellist = document.querySelector(tabpanellist);
+// 			} else {
+// 				this.tabpanellist = tabpanellist;
+// 			}
+// 		}
+// 		if (this.param.btnClose) {
+// 			const btnClose = document.createElement('a');
+// 			btnClose.href = '#';
+// 			btnClose.classList.add('modalclose');
+// 			btnClose.setAttribute('aria-label', '閉じる');
+// 			btnClose.addEventListener('click', (e) => {
+// 				e.preventDefault();
+// 				e.stopPropagation();
+// 				this.modalClose();
+// 			});
+// 			this.tabpanellist.insertAdjacentElement('beforeend', btnClose);
+// 		}
+// 		if (this.param.btnPrev) {
+// 			const btnPrev = document.createElement('a');
+// 			btnPrev.href = '#';
+// 			btnPrev.classList.add('tabprev');
+// 			btnPrev.setAttribute('aria-label', '前へ');
+// 			btnPrev.addEventListener('click', (e) => {
+// 				e.preventDefault();
+// 				e.stopPropagation();
+// 				this.tabPrev();
+// 			});
+// 			this.tabpanellist.insertAdjacentElement('beforeend', btnPrev);
+// 		}
+// 		if (this.param.btnNext) {
+// 			const btnNext = document.createElement('a');
+// 			btnNext.href = '#';
+// 			btnNext.classList.add('tabnext');
+// 			btnNext.setAttribute('aria-label', '次へ');
+// 			btnNext.addEventListener('click', (e) => {
+// 				e.preventDefault();
+// 				e.stopPropagation();
+// 				this.tabNext();
+// 			});
+// 			this.tabpanellist.insertAdjacentElement('beforeend', btnNext);
+// 		}
+// 		document.body.insertAdjacentElement('beforeend', this.tabpanellist);
+// 		this.target = this.tabpanellist.querySelectorAll(this.param.targetSelector);
+// 		this.modal = this.tabpanellist;
+// 		this.currentIndex = -1;
+// 		this.prevIndex = -1;
+// 		this.modalIsOpen = false;
 
-		this.init();
-	}
+// 		this.init();
+// 	}
 
-	init(callback) {
-		this.modal.addEventListener('click', (e) => {
-			e.preventDefault();
-			if (this.modalIsOpen) {
-				this.modalClose();
-			}
-		});
+// 	init(callback) {
+// 		this.modal.addEventListener('click', (e) => {
+// 			e.preventDefault();
+// 			if (this.modalIsOpen) {
+// 				this.modalClose();
+// 			}
+// 		});
 
-		for (let i = 0; i < this.trigger.length; i++) {
-			this.trigger[i].setAttribute('aria-selected', false);
-			this.target[i].setAttribute('aria-hidden', true);
-			this.trigger[i].addEventListener('click', (e) => {
-				e.preventDefault();
-				if (i !== this.currentIndex) {
-					this.tabChange(i);
-					if (!this.modalIsOpen) this.modalOpen();
-				} else {
-					if (this.modalIsOpen) this.modalClose();
-				}
-			});
-			this.target[i].addEventListener('click', (e) => {
-				e.stopPropagation();
-			});
-		}
+// 		for (let i = 0; i < this.trigger.length; i++) {
+// 			this.trigger[i].setAttribute('aria-selected', false);
+// 			this.target[i].setAttribute('aria-hidden', true);
+// 			this.trigger[i].addEventListener('click', (e) => {
+// 				e.preventDefault();
+// 				if (i !== this.currentIndex) {
+// 					this.tabChange(i);
+// 					if (!this.modalIsOpen) this.modalOpen();
+// 				} else {
+// 					if (this.modalIsOpen) this.modalClose();
+// 				}
+// 			});
+// 			this.target[i].addEventListener('click', (e) => {
+// 				e.stopPropagation();
+// 			});
+// 		}
 
-		this.modal.setAttribute('aria-hidden', true);
+// 		this.modal.setAttribute('aria-hidden', true);
 
-		this.tablist.setAttribute(this.param.indexAttr, this.currentIndex);
-		this.tabpanellist.setAttribute(this.param.indexAttr, this.currentIndex);
+// 		this.tablist.setAttribute(this.param.indexAttr, this.currentIndex);
+// 		this.tabpanellist.setAttribute(this.param.indexAttr, this.currentIndex);
 
-		let ticking = false;
-		window.addEventListener(
-			'scroll',
-			() => {
-				if (ticking === false) {
-					requestAnimationFrame(() => {
-						if (this.modalIsOpen) {
-							this.modalClose();
-						}
-						ticking = false;
-					});
-				}
-				ticking = true;
-			},
-			false
-		);
+// 		let ticking = false;
+// 		window.addEventListener(
+// 			'scroll',
+// 			() => {
+// 				if (ticking === false) {
+// 					requestAnimationFrame(() => {
+// 						if (this.modalIsOpen) {
+// 							this.modalClose();
+// 						}
+// 						ticking = false;
+// 					});
+// 				}
+// 				ticking = true;
+// 			},
+// 			false
+// 		);
 
-		if (this.param.type === 'gallery') {
-			this.modal.addEventListener(
-				'mousedown',
-				(e) => {
-					e.preventDefault();
-					const downPosX = e.pageX;
+// 		if (this.param.type === 'gallery') {
+// 			this.modal.addEventListener(
+// 				'mousedown',
+// 				(e) => {
+// 					e.preventDefault();
+// 					const downPosX = e.pageX;
 
-					const getSwipeX = (e) => {
-						this.swipeMove(e.pageX - downPosX);
-					};
+// 					const getSwipeX = (e) => {
+// 						this.swipeMove(e.pageX - downPosX);
+// 					};
 
-					const changeSlide = (e) => {
-						if (e.pageX - downPosX < -window.innerWidth * 0.5) {
-							this.tabNext();
-						} else if (e.pageX - downPosX > window.innerWidth * 0.5) {
-							this.tabPrev();
-						} else {
-							this.swipeMove(0);
-						}
-						this.modal.removeEventListener('mousemove', getSwipeX);
-						this.modal.removeEventListener('mouseup', changeSlide);
-					};
+// 					const changeSlide = (e) => {
+// 						if (e.pageX - downPosX < -window.innerWidth * 0.5) {
+// 							this.tabNext();
+// 						} else if (e.pageX - downPosX > window.innerWidth * 0.5) {
+// 							this.tabPrev();
+// 						} else {
+// 							this.swipeMove(0);
+// 						}
+// 						this.modal.removeEventListener('mousemove', getSwipeX);
+// 						this.modal.removeEventListener('mouseup', changeSlide);
+// 					};
 
-					this.modal.addEventListener('mousemove', getSwipeX, false);
-					this.modal.addEventListener('mouseup', changeSlide, false);
-				},
-				false
-			);
-		}
-		if (typeof callback === 'function') callback();
-	}
+// 					this.modal.addEventListener('mousemove', getSwipeX, false);
+// 					this.modal.addEventListener('mouseup', changeSlide, false);
+// 				},
+// 				false
+// 			);
+// 		}
+// 		if (typeof callback === 'function') callback();
+// 	}
 
-	modalOpen(callback) {
-		this.modal.setAttribute('aria-hidden', false);
-		this.modalIsOpen = true;
-		if (typeof callback === 'function') callback();
-	}
+// 	modalOpen(callback) {
+// 		this.modal.setAttribute('aria-hidden', false);
+// 		this.modalIsOpen = true;
+// 		if (typeof callback === 'function') callback();
+// 	}
 
-	modalClose(callback) {
-		this.modal.setAttribute('aria-hidden', true);
-		this.modalIsOpen = false;
-		this.tabChange(-1);
-		if (typeof callback === 'function') callback();
-	}
+// 	modalClose(callback) {
+// 		this.modal.setAttribute('aria-hidden', true);
+// 		this.modalIsOpen = false;
+// 		this.tabChange(-1);
+// 		if (typeof callback === 'function') callback();
+// 	}
 
-	tabChange(index, callback) {
-		if (this.currentIndex !== index && index >= -1 && index < this.target.length) {
-			this.prevIndex = this.currentIndex;
-			this.currentIndex = index;
+// 	tabChange(index, callback) {
+// 		if (this.currentIndex !== index && index >= -1 && index < this.target.length) {
+// 			this.prevIndex = this.currentIndex;
+// 			this.currentIndex = index;
 
-			for (let j = 0; j < this.trigger.length; j++) {
-				this.trigger[j].setAttribute('aria-selected', false);
-				this.trigger[j].style.pointerEvents = 'none';
-				if (j !== this.prevIndex) {
-					this.target[j].setAttribute('aria-hidden', true);
-				}
-			}
+// 			for (let j = 0; j < this.trigger.length; j++) {
+// 				this.trigger[j].setAttribute('aria-selected', false);
+// 				this.trigger[j].style.pointerEvents = 'none';
+// 				if (j !== this.prevIndex) {
+// 					this.target[j].setAttribute('aria-hidden', true);
+// 				}
+// 			}
 
-			if (this.prevIndex >= 0) this.target[this.prevIndex].classList.add(this.param.classLeave);
-			if (this.currentIndex >= 0) this.trigger[this.currentIndex].setAttribute('aria-selected', true);
-			this.tablist.setAttribute(this.param.indexAttr, this.currentIndex);
-			this.tabpanellist.setAttribute(this.param.indexAttr, this.currentIndex);
+// 			if (this.prevIndex >= 0) this.target[this.prevIndex].classList.add(this.param.classLeave);
+// 			if (this.currentIndex >= 0) this.trigger[this.currentIndex].setAttribute('aria-selected', true);
+// 			this.tablist.setAttribute(this.param.indexAttr, this.currentIndex);
+// 			this.tabpanellist.setAttribute(this.param.indexAttr, this.currentIndex);
 
-			setTimeout(() => {
-				if (this.prevIndex >= 0) {
-					this.target[this.prevIndex].setAttribute('aria-hidden', true);
-					this.target[this.prevIndex].classList.remove(this.param.classLeave);
-					this.swipeMove(0, this.prevIndex);
-				}
-				if (this.currentIndex >= 0) {
-					this.target[this.currentIndex].classList.add(this.param.classEnter);
-					requestAnimationFrame(() => {
-						this.target[this.currentIndex].setAttribute('aria-hidden', false);
-						requestAnimationFrame(() => {
-							this.target[this.currentIndex].classList.remove(this.param.classEnter);
-						});
-					});
-				}
-				for (let j = 0; j < this.trigger.length; j++) {
-					this.trigger[j].style.pointerEvents = 'auto';
-				}
-			}, this.param.duration);
-		}
-		if (typeof callback === 'function') callback();
-	}
+// 			setTimeout(() => {
+// 				if (this.prevIndex >= 0) {
+// 					this.target[this.prevIndex].setAttribute('aria-hidden', true);
+// 					this.target[this.prevIndex].classList.remove(this.param.classLeave);
+// 					this.swipeMove(0, this.prevIndex);
+// 				}
+// 				if (this.currentIndex >= 0) {
+// 					this.target[this.currentIndex].classList.add(this.param.classEnter);
+// 					requestAnimationFrame(() => {
+// 						this.target[this.currentIndex].setAttribute('aria-hidden', false);
+// 						requestAnimationFrame(() => {
+// 							this.target[this.currentIndex].classList.remove(this.param.classEnter);
+// 						});
+// 					});
+// 				}
+// 				for (let j = 0; j < this.trigger.length; j++) {
+// 					this.trigger[j].style.pointerEvents = 'auto';
+// 				}
+// 			}, this.param.duration);
+// 		}
+// 		if (typeof callback === 'function') callback();
+// 	}
 
-	getCurrentIndex(callback) {
-		if (typeof callback === 'function') callback();
-		return this.currentIndex;
-	}
+// 	getCurrentIndex(callback) {
+// 		if (typeof callback === 'function') callback();
+// 		return this.currentIndex;
+// 	}
 
-	tabNext(callback) {
-		const mod = (a, b) => {
-			return ((a % b) + b) % b;
-		};
-		if (this.currentIndex + 1 < this.target.length || this.param.loop) {
-			this.tabChange(mod(this.currentIndex + 1, this.target.length));
-		}
-		if (typeof callback === 'function') callback();
-	}
+// 	tabNext(callback) {
+// 		const mod = (a, b) => {
+// 			return ((a % b) + b) % b;
+// 		};
+// 		if (this.currentIndex + 1 < this.target.length || this.param.loop) {
+// 			this.tabChange(mod(this.currentIndex + 1, this.target.length));
+// 		}
+// 		if (typeof callback === 'function') callback();
+// 	}
 
-	tabPrev(callback) {
-		const mod = (a, b) => {
-			return ((a % b) + b) % b;
-		};
-		if (this.currentIndex - 1 >= 0 || this.param.loop) {
-			this.tabChange(mod(this.currentIndex - 1, this.target.length));
-		}
-		if (typeof callback === 'function') callback();
-	}
+// 	tabPrev(callback) {
+// 		const mod = (a, b) => {
+// 			return ((a % b) + b) % b;
+// 		};
+// 		if (this.currentIndex - 1 >= 0 || this.param.loop) {
+// 			this.tabChange(mod(this.currentIndex - 1, this.target.length));
+// 		}
+// 		if (typeof callback === 'function') callback();
+// 	}
 
-	swipeMove(x, index) {
-		if (typeof index !== 'number') {
-			index = this.currentIndex;
-		}
-		if (x === 0) {
-			this.target[index].style.transform = '';
-		} else {
-			this.target[index].style.transform = 'translateX(' + x + 'px)';
-		}
-	}
-}
+// 	swipeMove(x, index) {
+// 		if (typeof index !== 'number') {
+// 			index = this.currentIndex;
+// 		}
+// 		if (x === 0) {
+// 			this.target[index].style.transform = '';
+// 		} else {
+// 			this.target[index].style.transform = 'translateX(' + x + 'px)';
+// 		}
+// 	}
+// }
 
 /* ==========================================
  Site common

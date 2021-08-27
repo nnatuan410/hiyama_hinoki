@@ -17,7 +17,13 @@ $break01: 750px;
 		@content;
 	}
 }
-
+@mixin responsive($breakpoint) {
+	@if $breakpoint == scalePC {
+		@media only screen and (max-width: 1920px) and (min-width: 750px) {
+			@content;
+		}
+	}
+}
 @mixin mq($min: null, $max: null) {
 	@if type-of($min) == number {
 		@if type-of($max) == number {
@@ -169,15 +175,15 @@ $break01: 750px;
 }
 
 @mixin font-gothic {
-	font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, 'MS PGothic', sans-serif;
+	font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
 
 	@include ie {
-		font-family: Meiryo, 'MS PGothic', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
+		font-family: Meiryo, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', sans-serif;
 	}
 }
 
 @mixin font-mincho {
-	font-family: 'Hiragino Mincho ProN', 'YuMincho', 'Yu Mincho', 'MS PMincho', serif;
+	font-family: 'Hiragino Mincho ProN', serif;
 }
 
 @mixin webfont-ja01 {
@@ -233,9 +239,9 @@ $break01: 750px;
 /* function
 -------------------------------------------------------------------------------------------------------------------- */
 
-@function rem($size-design: 30) {
+@function rem($size-design: 20) {
 	$size-design: $size-design / ($size-design * 0 + 1);
-	@return $size-design / 30 * 1rem;
+	@return $size-design / 20 * 1rem;
 }
 
 @function stripe-gradient($direction, $colors...) {
@@ -251,4 +257,27 @@ $break01: 750px;
 		$stopPos: join($stopPos, (percentage(1 / $colorLength * ($i - 1)), percentage(1 / $colorLength * $i)));
 	}
 	@return linear-gradient($direction, zip($stopColor, $stopPos));
+}
+/* animation
+-------------------------------------------------------------------------------------------------------------------- */
+@keyframes pulse {
+	from,
+	30% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	50% {
+		opacity: 0.5;
+		transform: translateY(-15px);
+	}
+	80%,
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes moveTop {
+	100% {
+		top: -999px;
+	}
 }

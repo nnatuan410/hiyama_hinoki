@@ -35,50 +35,50 @@
 	};
 
 	// let container = document.querySelectorAll('.uim_container');
-	let all = document.body.querySelectorAll('*');
-	let modules = [];
-	for (let i = 0; i < all.length; i++) {
-		all[i].classList.forEach((str) => {
-			if (str.indexOf('ui_') === 0) {
-				modules.push(all[i]);
-			}
-		});
-	}
-	for (let i = 0; i < modules.length; i++) {
-		modules[i].classList.add('uim');
-	}
+	// let all = document.body.querySelectorAll('*');
+	// let modules = [];
+	// for (let i = 0; i < all.length; i++) {
+	// 	all[i].classList.forEach((str) => {
+	// 		if (str.indexOf('ui_') === 0) {
+	// 			modules.push(all[i]);
+	// 		}
+	// 	});
+	// }
+	// for (let i = 0; i < modules.length; i++) {
+	// 	modules[i].classList.add('uim');
+	// }
 
-	const modeControl = document.createElement('div');
-	modeControl.setAttribute('id', 'uim_mode');
-	modeControl.setAttribute('data-mode', 'normal');
+	// const modeControl = document.createElement('div');
+	// modeControl.setAttribute('id', 'uim_mode');
+	// modeControl.setAttribute('data-mode', 'normal');
 
-	const btnNormal = document.createElement('a');
-	btnNormal.classList.add('normal');
-	btnNormal.innerText = '通常';
-	btnNormal.addEventListener(
-		'click',
-		(e) => {
-			document.body.contentEditable = false;
-			modeControl.setAttribute('data-mode', 'normal');
-		},
-		false
-	);
+	// const btnNormal = document.createElement('a');
+	// btnNormal.classList.add('normal');
+	// btnNormal.innerText = '通常';
+	// btnNormal.addEventListener(
+	// 	'click',
+	// 	(e) => {
+	// 		document.body.contentEditable = false;
+	// 		modeControl.setAttribute('data-mode', 'normal');
+	// 	},
+	// 	false
+	// );
 
-	const btnEditable = document.createElement('a');
-	btnEditable.classList.add('editable');
-	btnEditable.innerText = '編集';
-	btnEditable.addEventListener(
-		'click',
-		(e) => {
-			document.body.contentEditable = true;
-			modeControl.setAttribute('data-mode', 'editable');
-		},
-		false
-	);
+	// const btnEditable = document.createElement('a');
+	// btnEditable.classList.add('editable');
+	// btnEditable.innerText = '編集';
+	// btnEditable.addEventListener(
+	// 	'click',
+	// 	(e) => {
+	// 		document.body.contentEditable = true;
+	// 		modeControl.setAttribute('data-mode', 'editable');
+	// 	},
+	// 	false
+	// );
 
-	modeControl.insertAdjacentElement('beforeend', btnNormal);
-	modeControl.insertAdjacentElement('beforeend', btnEditable);
-	document.body.insertAdjacentElement('beforeend', modeControl);
+	// modeControl.insertAdjacentElement('beforeend', btnNormal);
+	// modeControl.insertAdjacentElement('beforeend', btnEditable);
+	// document.body.insertAdjacentElement('beforeend', modeControl);
 
 	// for(let i=0; i<container.length; i++){
 	// 	console.log(container[i]);

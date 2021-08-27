@@ -1,3 +1,11 @@
+/* Loading
+-------------------------------------------------------------------------------------------------------------------- */
+{
+	var loader = document.getElementById('loading');
+	window.addEventListener('load', function moveTop() {
+		loader.querySelector('logo').classList.add('loadingOver');
+	});
+}
 /* Main Visual (ex jQuery)
 -------------------------------------------------------------------------------------------------------------------- */
 {
@@ -23,7 +31,6 @@
 						duration: 600,
 						begin: () => {
 							loading.style.pointerEvents = 'none';
-							loading.querySelector('.progress').style.backgroundPositionX = '0%';
 						},
 						complete: () => {
 							loading.style.display = 'none';
