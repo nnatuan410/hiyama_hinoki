@@ -47,21 +47,11 @@ a[href^='tel:'] {
 }
 
 @include sp {
-	html {
-		font-size: 30px;
-	}
-
 	html.disableScroll,
 	html.disableScroll body {
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-	}
-
-	#wrapper {
-		min-width: 750px;
-		background-size: 750px auto;
-		padding: 140px 0 90px;
 	}
 }
 

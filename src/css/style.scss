@@ -84,8 +84,8 @@
 	.bg {
 		position: absolute;
 		object-fit: cover;
-		max-width: 100%;
-		height: 100%;
+		// max-width: 100%;
+		// height: 100%;
 		top: 0;
 		left: 0;
 		bottom: 0;
@@ -296,14 +296,42 @@
 	}
 
 	@include sp {
-		#mainVisual {
-			.bg {
+		> .bg {
+			& img {
+				height: auto;
 			}
 		}
+		> .pic {
+			> .slide {
+				> li {
+					&:nth-child(1) {
+						width: rem(1320);
+						top: rem(220);
+						left: rem(50);
+					}
+					&:nth-child(2) {
+						width: rem(920);
+						top: rem(220);
+						right: rem(400);
+					}
+					&:nth-child(3) {
+						width: rem(580);
+						top: rem(1030);
+						right: rem(930);
+					}
+					&:nth-child(4) {
+						width: rem(750);
+						top: rem(920);
+						right: rem(100);
+					}
+				}
+			}
+		}
+		> .btn_contact01 {
+			display: none;
+		}
 		> .container {
-			width: 750px;
-			height: 1100px;
-
+			width: rem(670);
 			> .title {
 				top: 416px;
 				margin-left: -263px;
@@ -567,7 +595,6 @@
 	}
 
 	@include sp {
-		margin-top: 90px;
 		padding: 149px 35px 70px;
 		background-color: #dbf1e3;
 
@@ -2119,6 +2146,37 @@
 				font-size: rem(44);
 				color: #ffffff;
 				cursor: pointer;
+				position: relative;
+				transition: all 0.25s;
+				overflow: hidden;
+			}
+			& button::after {
+				content: '';
+				position: absolute;
+				z-index: 1;
+				height: 0;
+				left: 50%;
+				top: 50%;
+				width: 0;
+				border-radius: 25px;
+				transition: all 0.25s;
+			}
+			& button:hover {
+				color: #ffffff;
+			}
+			& button:hover::after {
+				animation: hoverBtn 0.45s forwards;
+			}
+			@keyframes hoverBtn {
+				100% {
+					opacity: 0.1;
+					background-color: #fff;
+					height: 100%;
+					left: 0;
+					top: 0;
+					width: 100%;
+					transform: scale(1.2);
+				}
 			}
 		}
 	}
