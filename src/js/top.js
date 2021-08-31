@@ -6,6 +6,24 @@
 		loader.querySelector('logo').classList.add('loadingOver');
 	});
 }
+
+let fadeLoad = Array.from(document.querySelectorAll('.fadeLoad'));
+window.addEventListener('scroll', scanElements);
+function scanElements(e) {
+	fadeLoad.forEach((element) => {
+		if (isVisible(element)) {
+			element.classList.add('current');
+		} else {
+			// element.classList.remove('current');
+		}
+	});
+}
+function isVisible(element) {
+	const elementDiv = element.getBoundingClientRect();
+	let distanceFromTop = -50;
+	return elementDiv.top - window.innerHeight < distanceFromTop ? true : false;
+}
+
 /* Main Visual (ex jQuery)
 -------------------------------------------------------------------------------------------------------------------- */
 {

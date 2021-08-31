@@ -234,7 +234,7 @@
 		justify-content: center;
 		text-align: center;
 		cursor: pointer;
-		animation: jumpBtn 0.55s forwards;
+		animation: jumpBtncontact 0.55s forwards;
 		animation-delay: 0.75s;
 		opacity: 0;
 		> a {
@@ -247,6 +247,24 @@
 				color: #381c01;
 				font-size: 1.125rem;
 				line-height: 1.5;
+			}
+		}
+		@keyframes jumpBtncontact {
+			0% {
+				opacity: 0;
+				transform: translateY(-500px);
+			}
+			50% {
+				opacity: 0;
+				transform: translateY(30px);
+			}
+			80% {
+				opacity: 1;
+				transform: translateY(-30px);
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
 			}
 		}
 	}
@@ -406,24 +424,7 @@
 			transform: translate(-50%, 0);
 		}
 	}
-	@keyframes jumpBtn {
-		0% {
-			opacity: 1;
-			transform: translateY(-500px);
-		}
-		50% {
-			opacity: 1;
-			transform: translateY(30px);
-		}
-		80% {
-			opacity: 1;
-			transform: translateY(-30px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
+
 	@keyframes jumpDeco {
 		0% {
 			opacity: 1;
@@ -600,49 +601,6 @@
 		}
 	}
 }
-
-/* before animation */
-// #mainVisual {
-// 	> .container {
-// 		> .title {
-// 			> span {
-// 				overflow: hidden;
-// 				max-width: 0;
-// 			}
-// 		}
-
-// 		> .pic {
-// 			> .slide {
-// 				> li {
-// 					max-width: 0;
-// 					overflow: hidden;
-// 				}
-// 			}
-// 		}
-
-// 		> .deco {
-// 			> span {
-// 				opacity: 0;
-// 			}
-// 		}
-
-// 		> .bg {
-// 			> span {
-// 				&:nth-child(1) {
-// 					transform: translate(-200px, 64px);
-// 				}
-
-// 				&:nth-child(2) {
-// 					transform: translate(-200px, -64px);
-// 				}
-// 			}
-// 		}
-
-// 		@at-root #scrollDown {
-// 			opacity: 0;
-// 		}
-// 	}
-// }
 /* feature
 -------------------------------------------------------------------------------------------------------------------- */
 #feature {
@@ -965,8 +923,8 @@
 			position: absolute;
 			width: 100%;
 			top: 0;
-			left: 50%;
-			transform: translateX(-50%);
+			left: 0;
+			// transform: translateX(-50%);
 			> span {
 				position: absolute;
 				left: 50%;
@@ -2557,5 +2515,23 @@
 			line-height: 1.6;
 			letter-spacing: 0.02rem;
 		}
+	}
+}
+
+.fadeLoad {
+	opacity: 0;
+}
+.fadeLoad.current {
+	opacity: 1;
+	animation: fadeLoad 0.5s ease-in;
+}
+@keyframes fadeLoad {
+	0% {
+		opacity: 0;
+		transform: translateY(60px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
