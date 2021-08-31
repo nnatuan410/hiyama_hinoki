@@ -258,26 +258,3 @@ $break01: 750px;
 	}
 	@return linear-gradient($direction, zip($stopColor, $stopPos));
 }
-/* animation
--------------------------------------------------------------------------------------------------------------------- */
-@keyframes pulse {
-	from,
-	30% {
-		opacity: 0;
-		transform: translateY(0);
-	}
-	50% {
-		opacity: 0.5;
-		transform: translateY(-15px);
-	}
-	80%,
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-@keyframes moveTop {
-	100% {
-		top: -999px;
-	}
-}

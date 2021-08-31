@@ -11,6 +11,8 @@
 {
 	const loading = document.getElementById('loading');
 	const mv = document.getElementById('mainVisual');
+	const bg = document.querySelector('.bg');
+	const pic = document.querySelector('.slide>li');
 	const mvBg = mv.querySelectorAll('.bg>span');
 	const mvDeco = mv.querySelectorAll('.deco>span');
 	const mvSlide = mv.querySelectorAll('.pic>.slide');
@@ -34,161 +36,162 @@
 						},
 						complete: () => {
 							loading.style.display = 'none';
+							logo.style.classList.add('logoStart');
 						},
 					},
 					0
-				)
-				.add(
-					{
-						targets: mvBg,
-						translateX: [-200, 0],
-						translateY: (el, i) => {
-							switch (i) {
-								case 0:
-									return [64, 0];
-									break;
-								case 1:
-									return [-64, 0];
-									break;
-							}
-						},
-						delay: (el, i) => {
-							return 400 * i;
-						},
-						duration: 800,
-					},
-					0
-				)
-				.add(
-					{
-						targets: mvDeco,
-						translateX: [-300, 0],
-						translateY: (el, i) => {
-							switch (i) {
-								case 0:
-									return [96, 0];
-									break;
-								case 1:
-									return [-96, 0];
-									break;
-							}
-						},
-						delay: (el, i) => {
-							return 400 * i;
-						},
-						opacity: 1,
-						duration: 800,
-					},
-					100
-				)
-				.add(
-					{
-						targets: null,
-						begin: () => {
-							const fadeSpeed = 800;
-							const switchDelay = 400;
-							const switchDuretion = 7000;
-							const slideLen = mvSlide.length;
-							let current = 0;
-
-							// init
-							mvSlide[0].style.zIndex = 1;
-							mvSlide[0].classList.add('current');
-							anime({
-								targets: mvSlide[0].children,
-								begin: () => {
-									for (let i = 0; i < mvSlide[0].children.length; i++) {
-										mvSlide[0].children[i].style.maxWidth = '580px';
-									}
-								},
-								translateX: [-100, 0],
-								translateY: (el, i) => {
-									switch (i) {
-										case 0:
-											return [32, 0];
-											break;
-										case 1:
-											return [-32, 0];
-											break;
-									}
-								},
-								delay: (el, i) => {
-									return 400 * i;
-								},
-								opacity: [0, 1],
-								duration: 800,
-								easing: 'easeOutSine',
-							});
-
-							if (slideLen >= 2) {
-								const mvTimer = anime({
-									targets: null,
-									duration: switchDuretion,
-									loop: true,
-									loopComplete: () => {
-										changeSlide(current + 1);
-									},
-									autoplay: false,
-								});
-
-								mvTimer.play();
-
-								const changeSlide = (n) => {
-									if (n % slideLen === current) {
-										return;
-									}
-
-									var prevSlide = mvSlide[current];
-									prevSlide.classList.remove('current');
-									current = n % slideLen;
-
-									var newSlide = mvSlide[current];
-									newSlide.classList.add('current');
-									newSlide.style.zIndex = 1;
-
-									anime({
-										targets: newSlide.children,
-										maxWidth: [0, 580],
-										delay: (el, i) => {
-											return switchDelay * i;
-										},
-										easing: 'easeOutSine',
-										duration: fadeSpeed,
-										complete: () => {
-											for (let i = 0; i < prevSlide.children.length; i++) {
-												prevSlide.children[i].style.maxWidth = 0;
-											}
-											newSlide.style.zIndex = 0;
-										},
-									});
-								};
-							}
-						},
-					},
-					400
-				)
-				.add(
-					{
-						targets: mvTitle,
-						maxWidth: [0, 530],
-						duration: 600,
-						delay: (el, i) => {
-							return 300 * i;
-						},
-						easing: 'linear',
-					},
-					1000
-				)
-				.add(
-					{
-						targets: scrollDown,
-						opacity: [0, 1],
-						translateY: [-20, 0],
-						duration: 1000,
-						easing: 'linear',
-					},
-					'-=600'
 				);
+			// .add(
+			// 	{
+			// 		targets: mvBg,
+			// 		translateX: [-200, 0],
+			// 		translateY: (el, i) => {
+			// 			switch (i) {
+			// 				case 0:
+			// 					return [64, 0];
+			// 					break;
+			// 				case 1:
+			// 					return [-64, 0];
+			// 					break;
+			// 			}
+			// 		},
+			// 		delay: (el, i) => {
+			// 			return 400 * i;
+			// 		},
+			// 		duration: 800,
+			// 	},
+			// 	0
+			// )
+			// .add(
+			// 	{
+			// 		targets: mvDeco,
+			// 		translateX: [-300, 0],
+			// 		translateY: (el, i) => {
+			// 			switch (i) {
+			// 				case 0:
+			// 					return [96, 0];
+			// 					break;
+			// 				case 1:
+			// 					return [-96, 0];
+			// 					break;
+			// 			}
+			// 		},
+			// 		delay: (el, i) => {
+			// 			return 400 * i;
+			// 		},
+			// 		opacity: 1,
+			// 		duration: 800,
+			// 	},
+			// 	100
+			// )
+			// .add(
+			// 	{
+			// 		targets: null,
+			// 		begin: () => {
+			// 			const fadeSpeed = 800;
+			// 			const switchDelay = 400;
+			// 			const switchDuretion = 7000;
+			// 			const slideLen = mvSlide.length;
+			// 			let current = 0;
+
+			// 			// init
+			// 			mvSlide[0].style.zIndex = 1;
+			// 			mvSlide[0].classList.add('current');
+			// 			anime({
+			// 				targets: mvSlide[0].children,
+			// 				begin: () => {
+			// 					for (let i = 0; i < mvSlide[0].children.length; i++) {
+			// 						mvSlide[0].children[i].style.maxWidth = '580px';
+			// 					}
+			// 				},
+			// 				translateX: [-100, 0],
+			// 				translateY: (el, i) => {
+			// 					switch (i) {
+			// 						case 0:
+			// 							return [32, 0];
+			// 							break;
+			// 						case 1:
+			// 							return [-32, 0];
+			// 							break;
+			// 					}
+			// 				},
+			// 				delay: (el, i) => {
+			// 					return 400 * i;
+			// 				},
+			// 				opacity: [0, 1],
+			// 				duration: 800,
+			// 				easing: 'easeOutSine',
+			// 			});
+
+			// 			if (slideLen >= 2) {
+			// 				const mvTimer = anime({
+			// 					targets: null,
+			// 					duration: switchDuretion,
+			// 					loop: true,
+			// 					loopComplete: () => {
+			// 						changeSlide(current + 1);
+			// 					},
+			// 					autoplay: false,
+			// 				});
+
+			// 				mvTimer.play();
+
+			// 				const changeSlide = (n) => {
+			// 					if (n % slideLen === current) {
+			// 						return;
+			// 					}
+
+			// 					var prevSlide = mvSlide[current];
+			// 					prevSlide.classList.remove('current');
+			// 					current = n % slideLen;
+
+			// 					var newSlide = mvSlide[current];
+			// 					newSlide.classList.add('current');
+			// 					newSlide.style.zIndex = 1;
+
+			// 					anime({
+			// 						targets: newSlide.children,
+			// 						maxWidth: [0, 580],
+			// 						delay: (el, i) => {
+			// 							return switchDelay * i;
+			// 						},
+			// 						easing: 'easeOutSine',
+			// 						duration: fadeSpeed,
+			// 						complete: () => {
+			// 							for (let i = 0; i < prevSlide.children.length; i++) {
+			// 								prevSlide.children[i].style.maxWidth = 0;
+			// 							}
+			// 							newSlide.style.zIndex = 0;
+			// 						},
+			// 					});
+			// 				};
+			// 			}
+			// 		},
+			// 	},
+			// 	400
+			// )
+			// .add(
+			// 	{
+			// 		targets: mvTitle,
+			// 		maxWidth: [0, 530],
+			// 		duration: 600,
+			// 		delay: (el, i) => {
+			// 			return 300 * i;
+			// 		},
+			// 		easing: 'linear',
+			// 	},
+			// 	1000
+			// )
+			// .add(
+			// 	{
+			// 		targets: scrollDown,
+			// 		opacity: [0, 1],
+			// 		translateY: [-20, 0],
+			// 		duration: 1000,
+			// 		easing: 'linear',
+			// 	},
+			// 	'-=600'
+			// );
 		},
 		false
 	);

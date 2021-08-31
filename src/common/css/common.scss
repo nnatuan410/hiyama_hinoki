@@ -17,9 +17,9 @@ html {
 	color: #000000;
 	-webkit-text-size-adjust: 100%;
 	text-align: justify;
-	@include responsive(scalePC) {
-		font-size: calc(100vw / 192);
-	}
+	// @include responsive(scalePC) {
+	// 	font-size: calc(100vw / 192);
+	// }
 }
 
 #wrapper {
@@ -29,18 +29,18 @@ html {
 	position: relative;
 }
 
-// .fc01,
-// strong {
-// 	color: #ff5a00;
-// }
+.fc01,
+strong {
+	color: #ff5a00;
+}
 
-// .link01 {
-// 	color: #22ac38;
+.link01 {
+	color: #22ac38;
 
-// 	&:hover {
-// 		text-decoration: none;
-// 	}
-// }
+	&:hover {
+		text-decoration: none;
+	}
+}
 
 a[href^='tel:'] {
 	cursor: default;
