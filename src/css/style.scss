@@ -234,7 +234,7 @@
 		justify-content: center;
 		text-align: center;
 		cursor: pointer;
-		animation: jump 0.55s forwards;
+		animation: jumpBtn 0.55s forwards;
 		animation-delay: 0.75s;
 		opacity: 0;
 		> a {
@@ -404,6 +404,24 @@
 		100% {
 			opacity: 1;
 			transform: translate(-50%, 0);
+		}
+	}
+	@keyframes jumpBtn {
+		0% {
+			opacity: 1;
+			transform: translateY(-500px);
+		}
+		50% {
+			opacity: 1;
+			transform: translateY(30px);
+		}
+		80% {
+			opacity: 1;
+			transform: translateY(-30px);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
 		}
 	}
 	@keyframes jumpDeco {
