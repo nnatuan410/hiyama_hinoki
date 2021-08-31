@@ -648,6 +648,17 @@
 				&:nth-child(2) {
 					top: -92px;
 				}
+				&:nth-child(3) {
+					top: -108px;
+					left: 50%;
+					transform: translateX(-50.5%);
+					animation: scale 0.5s infinite alternate;
+				}
+				@keyframes scale {
+					100% {
+						transform: scaleY(1.1) translateX(-50.5%);
+					}
+				}
 			}
 		}
 		> .deco {
@@ -656,50 +667,45 @@
 			> span {
 				position: absolute;
 				&:nth-child(1) {
-					top: -108px;
-					left: 50%;
-					transform: translateX(-50.5%);
-				}
-				&:nth-child(2) {
 					top: -184px;
 					right: 250px;
 				}
-				&:nth-child(3) {
+				&:nth-child(2) {
 					top: -144px;
 					left: 281px;
 				}
-				&:nth-child(4) {
+				&:nth-child(3) {
 					top: 166px;
 					left: -100px;
 				}
-				&:nth-child(5) {
+				&:nth-child(4) {
 					top: 250px;
 					right: -137px;
 				}
-				&:nth-child(6) {
+				&:nth-child(5) {
 					left: -125px;
 					top: 422px;
 				}
-				&:nth-child(7) {
+				&:nth-child(6) {
 					top: 396px;
 					right: -110px;
 				}
-				&:nth-child(8) {
+				&:nth-child(7) {
 					top: 450px;
 					left: -310px;
 					z-index: -1;
 				}
-				&:nth-child(9) {
+				&:nth-child(8) {
 					top: 450px;
 					right: -310px;
 					z-index: -1;
 				}
-				&:nth-child(10) {
+				&:nth-child(9) {
 					top: -220px;
 					left: -310px;
 					z-index: 5;
 				}
-				&:nth-child(11) {
+				&:nth-child(10) {
 					top: -220px;
 					right: -310px;
 					z-index: 5;
@@ -1300,6 +1306,12 @@
 				&:nth-child(3) {
 					top: 68px;
 					transform: translateX(-50.5%);
+					animation: scale 0.5s infinite alternate;
+				}
+				@keyframes scale {
+					100% {
+						transform: scaleY(1.1) translateX(-50.5%);
+					}
 				}
 			}
 		}
@@ -1759,7 +1771,7 @@
 			display: flex;
 			justify-content: center;
 			gap: 20px;
-			animation: scroll 45s linear infinite;
+			animation: scroll 45s linear infinite alternate;
 			z-index: 1;
 			& li {
 				width: 330px;
@@ -1770,7 +1782,7 @@
 					transform: translateX(0);
 				}
 				100% {
-					transform: translateX(calc(-330px * 6));
+					transform: translateX(calc(-330px * 4));
 				}
 			}
 		}
@@ -1991,6 +2003,12 @@
 					width: 720px;
 					top: -190px;
 					left: 544px;
+					animation: scale 0.5s infinite alternate;
+				}
+				@keyframes scale {
+					100% {
+						transform: scaleY(1.1) translateX(-50%);
+					}
 				}
 			}
 		}
