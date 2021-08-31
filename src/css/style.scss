@@ -1717,6 +1717,7 @@
 			width: 100%;
 			position: absolute;
 			top: -13px;
+			z-index: 5;
 			> span {
 				position: absolute;
 				top: 0;
@@ -1754,14 +1755,27 @@
 		}
 		> .list {
 			margin: 190px 0 140px;
-			width: 100%;
+			width: calc(330px * 12);
 			display: flex;
 			justify-content: center;
-			overflow-x: auto;
 			gap: 20px;
+			animation: scroll 45s linear infinite;
+			z-index: 1;
 			& li {
 				width: 330px;
+				flex-shrink: 0;
 			}
+			@keyframes scroll {
+				0% {
+					transform: translateX(0);
+				}
+				100% {
+					transform: translateX(calc(-330px * 6));
+				}
+			}
+		}
+		> .list:hover {
+			animation-play-state: paused;
 		}
 	}
 
